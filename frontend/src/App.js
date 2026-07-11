@@ -18,6 +18,8 @@ import './App.css';
 import MyAppointments from './components/MyAppointments';
 import AdminOrder from './components/AdminOrder';
 import ChangePassword from './components/ChangePassword';
+import ForgotPassword from './components/ForgotPassword';
+import ContactUs from './components/ContactUs';
 function App() {
   const [user, setUser] = useState(null);
 
@@ -44,6 +46,7 @@ function App() {
           <Route path="/my-appointments" element={user ? <MyAppointments /> : <Navigate to="/login" />} />
           <Route path="/change-password" element={user ? <ChangePassword /> : <Navigate to="/login" />} />
           <Route path="/forget-password" element={<ForgotPassword />} />
+          <Route path="/contact-us" element={<ContactUs />} />
         </Routes>
         <ToastContainer position="bottom-right" />
       </BrowserRouter>

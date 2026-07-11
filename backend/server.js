@@ -17,6 +17,7 @@ mongoose.connect(process.env.MONGO_URI)
   app.use('/api/products',require('./routes/ProductRoutes'));
   app.use('/api/orders', require('./routes/orderRoutes'))
   app.use('/api/appointments', require('./routes/AppointmentRoutes'));
+  app.use('/api/queries', require('./routes/queryRoutes'));
 app.get('/', (req, res) => {
   res.send('👓 Optical Store API is running!');
 });

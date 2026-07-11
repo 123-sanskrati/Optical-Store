@@ -45,6 +45,9 @@ function Navbar({ user, setUser }) {
             <li className="nav-item">
               <Link className="nav-link fw-medium" to="/products" style={{ color: '#4a4a6a' }}>🕶️ Frames</Link>
             </li>
+            <li className='nav-item'>
+              <link className='nav-link fw-medium' to='/contact-us' style={{ color: '#4a4a6a' }}>📞 Contact Us</link>
+            </li>
             <li className="nav-item">
               <Link className="nav-link fw-medium" to="/cart" style={{ color: '#4a4a6a' }}>
                 🛒 Cart 
