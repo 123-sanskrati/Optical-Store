@@ -43,7 +43,7 @@ function App() {
           <Route path="/admin-orders" element={ user?.role === 'admin' ? <AdminOrder /> : <Navigate to="/" /> } />
           <Route path="/my-appointments" element={user ? <MyAppointments /> : <Navigate to="/login" />} />
           <Route path="/change-password" element={user ? <ChangePassword /> : <Navigate to="/login" />} />
-        
+          <Route path="/forget-password" element={<ForgotPassword />} />
         </Routes>
         <ToastContainer position="bottom-right" />
       </BrowserRouter>
