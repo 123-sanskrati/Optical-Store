@@ -38,4 +38,36 @@ router.get('/my-orders', auth, async (req, res) => {
   }
 });
 
+// GET - All orders (Admin only)
+router.get('/all', auth, async (req, res) => {
+  try {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Admin access required' });
+    }
+    const orders = await Order.find()
+      .populate('user', 'name email')
+      .sort({ createdAt: -1 });
+    res.json(orders);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// PUT - Update order status (Admin only)
+router.put('/:id', auth, async (req, res) => {
+  try {
+    if (req.user.role !== 'admin') {
+      return res.status(403).json({ message: 'Admin access required' });
+    }
+    const order = await Order.findByIdAndUpdate(
+      req.params.id,
+      { orderStatus: req.body.orderStatus },
+      { new: true }
+    );
+    res.json(order);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
 module.exports = router;
