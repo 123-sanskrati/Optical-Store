@@ -132,4 +132,23 @@ router.put('/change-password', auth, async (req, res) => {
     res.status(500).json({ message: err.message || 'Server error' });
   }
 });
+// FORGOT PASSWORD (verify email + phone, then reset)
+router.post('/forgot-password', async (req, res) => {
+  try {
+    const { email, phone, newPassword } = req.body;
+
+    const user = await User.findOne({ email, phone });
+    if (!user) {
+      return res.status(400).json({ message: 'Email and phone do not match our records' });
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    res.json({ success: true, message: 'Password reset successfully! Please login.' });
+  } catch (err) {
+    console.error('❌ Forgot password error:', err);
+    res.status(500).json({ message: err.message || 'Server error' });
+  }
+});
 module.exports = router;
