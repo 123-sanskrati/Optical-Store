@@ -88,6 +88,15 @@ function Navbar({ user, setUser }) {
                     👋 {user.name}
                   </span>
                 </li>
+<li className="nav-item">
+  <Link className="nav-link fw-medium" to="/change-password" style={{ color: '#4a4a6a' }}>🔒 Change Password</Link>
+</li>
+
+
+
+
+
+
                 <li className="nav-item">
                   <button
                     className="btn btn-sm rounded-pill px-4"

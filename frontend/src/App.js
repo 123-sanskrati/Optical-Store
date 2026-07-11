@@ -17,6 +17,7 @@ import AdminAppointments from './components/AdminAppointments';
 import './App.css';
 import MyAppointments from './components/MyAppointments';
 import AdminOrder from './components/AdminOrder';
+import ChangePassword from './components/ChangePassword';
 function App() {
   const [user, setUser] = useState(null);
 
@@ -41,6 +42,7 @@ function App() {
           <Route path="/admin-appointments" element={ user?.role === 'admin' ? <AdminAppointments /> : <Navigate to="/" /> } />
           <Route path="/admin-orders" element={ user?.role === 'admin' ? <AdminOrder /> : <Navigate to="/" /> } />
           <Route path="/my-appointments" element={user ? <MyAppointments /> : <Navigate to="/login" />} />
+          <Route path="/change-password" element={user ? <ChangePassword /> : <Navigate to="/login" />} />
         
         </Routes>
         <ToastContainer position="bottom-right" />
