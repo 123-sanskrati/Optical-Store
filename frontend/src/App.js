@@ -16,7 +16,7 @@ import Register from './components/Register';
 import AdminAppointments from './components/AdminAppointments';
 import './App.css';
 import MyAppointments from './components/MyAppointments';
-import AdminOrders from './components/AdminOrders';
+import AdminOrder from './components/AdminOrder';
 function App() {
   const [user, setUser] = useState(null);
 
@@ -39,7 +39,7 @@ function App() {
           <Route path="/login" element={<Login setUser={setUser} />} />
           <Route path="/register" element={<Register setUser={setUser} />} />
           <Route path="/admin-appointments" element={ user?.role === 'admin' ? <AdminAppointments /> : <Navigate to="/" /> } />
-          <Route path="/admin-orders" element={ user?.role === 'admin' ? <AdminOrders /> : <Navigate to="/" /> } />
+          <Route path="/admin-orders" element={ user?.role === 'admin' ? <AdminOrder /> : <Navigate to="/" /> } />
           <Route path="/my-appointments" element={user ? <MyAppointments /> : <Navigate to="/login" />} />
         
         </Routes>
