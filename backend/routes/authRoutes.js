@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const auth = require('../middleware/auth');
 const router = express.Router();
 
 // REGISTER
@@ -107,5 +108,28 @@ router.post('/login', async (req, res) => {
     });
   }
 });
+// CHANGE PASSWORD (user must be logged in)
+router.put('/change-password', auth, async (req, res) => {
+  try {
+    const { oldPassword, newPassword } = req.body;
 
+    const user = await User.findById(req.user.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const isMatch = await user.comparePassword(oldPassword);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Old password is incorrect' });
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    res.json({ success: true, message: 'Password changed successfully!' });
+  } catch (err) {
+    console.error('❌ Change password error:', err);
+    res.status(500).json({ message: err.message || 'Server error' });
+  }
+});
 module.exports = router;
