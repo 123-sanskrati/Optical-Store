@@ -69,9 +69,14 @@ function Navbar({ user, setUser }) {
                   <Link className="nav-link fw-medium" to="/my-appointments" style={{ color: '#4a4a6a' }}>📋 My Appointments</Link>
                 </li>
                 {user?.role === 'admin' && (
+                  <>
                   <li className="nav-item">
                     <Link className="nav-link fw-medium" to="/admin-appointments" style={{ color: '#4a4a6a' }}>⚙️ Manage</Link>
                   </li>
+<li className="nav-item">
+      <Link className="nav-link fw-medium" to="/admin-orders" style={{ color: '#4a4a6a' }}>📦 Manage Orders</Link>
+    </li>
+    </>
                 )}
                 <li className="nav-item">
                   <span className="nav-link fw-semibold" style={{ 
