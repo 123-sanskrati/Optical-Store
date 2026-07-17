@@ -27,7 +27,7 @@ function Navbar({ user, setUser }) {
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent'
         }}>
-          👓 OptiMart
+        LensWorld
         </Link>
         <button
           className="navbar-toggler border-0"
